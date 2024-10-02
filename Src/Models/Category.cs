@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace apiCatedra1.Src.Models
 {
-    public class Type
+    public class Category
     {
         public int Id {get; set;}
 
