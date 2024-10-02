@@ -10,7 +10,7 @@ using apiCatedra1.Src.Data;
 namespace apiCatedra1.Src.Data.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241002150349_firstMigration")]
+    [Migration("20241002153103_firstMigration")]
     partial class firstMigration
     {
         /// <inheritdoc />
@@ -40,22 +40,19 @@ namespace apiCatedra1.Src.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("IdCategory")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("categoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("stock")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("categoryId");
 
                     b.ToTable("Products");
                 });
@@ -64,7 +61,7 @@ namespace apiCatedra1.Src.Data.Migrations
                 {
                     b.HasOne("apiCatedra1.Src.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("categoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

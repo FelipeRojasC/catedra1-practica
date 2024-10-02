@@ -31,24 +31,23 @@ namespace apiCatedra1.Src.Data.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     stock = table.Column<int>(type: "INTEGER", nullable: false),
-                    IdCategory = table.Column<int>(type: "INTEGER", nullable: false),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
+                    categoryId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
-                        column: x => x.CategoryId,
+                        name: "FK_Products_Categories_categoryId",
+                        column: x => x.categoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
+                name: "IX_Products_categoryId",
                 table: "Products",
-                column: "CategoryId");
+                column: "categoryId");
         }
 
         /// <inheritdoc />
