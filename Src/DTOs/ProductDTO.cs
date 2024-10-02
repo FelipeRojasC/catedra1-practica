@@ -10,6 +10,6 @@ namespace apiCatedra1.Src.DTOs
     {
         public string Name {get; set;}
         public int stock {get; set;}
-        public Category Category {get;set;}
+        public int CategoryId {get;set;}
     }
 }

@@ -1,4 +1,6 @@
 using apiCatedra1.Src.Data;
+using apiCatedra1.Src.Repositories.Implements;
+using apiCatedra1.Src.Repositories.Interfaces;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
 
 string connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "Data Source = app.db";
 
