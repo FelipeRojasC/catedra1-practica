@@ -20,8 +20,12 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope()){
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<ApplicationDBContext>();
+    //Aplica cualquier migracion pendiente en la base de datos.
+    context.Database.Migrate();
+    //Ingresa los dataseeders
     DataSeeder.Iniialize(services);
 }
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
